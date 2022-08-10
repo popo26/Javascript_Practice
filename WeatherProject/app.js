@@ -1,6 +1,7 @@
 const express = require("express");
 const https = require("https");
 const bodyParser = require("body-parser");//necessary for parsing body of post request
+require("dotenv").config();
 
 const app = express();
 
@@ -23,7 +24,7 @@ app.get("/", function(req, res){
 app.post("/", function(req, res){
 
   const query = req.body.cityName;
-  const apiKey = "myAPI";
+  const apiKey = process.env.API_KEY;
   const unit = "metric";
   const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + apiKey + "&units=" + unit;
 
@@ -52,6 +53,6 @@ app.post("/", function(req, res){
 
 
 
-app.listen(3000, function(){
+app.listen(5000, function(){
   console.log("Server is running on port 3000.");
 })

@@ -15,7 +15,7 @@ function App() {
    })
   }
 
-  function ddNote(id){
+  function deleteNote(id){
     setNotes(prevNotes => {
       return prevNotes.filter((noteItem, index) => {
         return index !== id;
@@ -33,7 +33,7 @@ function App() {
         id={index}
         title={noteItem.title} 
         content={noteItem.content}
-        dNote={ddNote} />;
+        dNote={deleteNote} />;
         })}
 
       <Footer />

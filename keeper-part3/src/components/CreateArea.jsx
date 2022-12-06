@@ -7,22 +7,30 @@ function CreateArea(props) {
     content:""
   });
 
-  function addItem(event) {
+  function handleChange(event) {
     const {name, value} = event.target;
   
-    setNewToDo(prevValue => {
-      if (name === "title"){
-        return {
-          title : value,
-          content : prevValue.content
+    setNewTodo(prevValue => {
+      return {
+        ...prevValue,
+        [name]: value
       };
-      } else if (name === "content") {
-        return {
-          title : prevValue.title,
-          content : value
-      };
-      }
     });
+
+    //Another way
+    // setNewToDo(prevValue => {
+    //   if (name === "title"){
+    //     return {
+    //       title : value,
+    //       content : prevValue.content
+    //   };
+    //   } else if (name === "content") {
+    //     return {
+    //       title : prevValue.title,
+    //       content : value
+    //   };
+    //   }
+    // });
   }
 
   function addToList(event){
@@ -38,8 +46,8 @@ function CreateArea(props) {
   return (
     <div>
       <form>
-        <input onChange={addItem} name="title" placeholder="Title" value={newToDo.title}/>
-        <textarea onChange={addItem}  name="content" placeholder="Take a note..." rows="3" value={newToDo.content}/>
+        <input onChange={handleChange} name="title" placeholder="Title" value={newToDo.title}/>
+        <textarea onChange={handleChange}  name="content" placeholder="Take a note..." rows="3" value={newToDo.content}/>
         <button onClick={addToList}>Add</button>
       </form>
     </div>

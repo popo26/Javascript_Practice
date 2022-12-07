@@ -10,14 +10,14 @@ function CreateArea(props) {
   function handleChange(event) {
     const {name, value} = event.target;
   
-    setNewTodo(prevValue => {
+    setNewToDo(prevValue => {
       return {
         ...prevValue,
         [name]: value
       };
     });
 
-    //Another way
+    // Another way
     // setNewToDo(prevValue => {
     //   if (name === "title"){
     //     return {
